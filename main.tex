@@ -1,0 +1,140 @@
+%全体の２段組.tex 
+\documentclass[a4j,twocolumn,fleqn]{jarticle}
+
+  \usepackage{bacheloryokou-ec} % EC-日本語用
+  %\usepackage{bacheloryokou-ec-eng} % For EC Eng.
+  %\usepackage{bacheloryokou-ie} % IE-日本語用
+  %\usepackage{bacheloryokou-ie-eng} % For IE Eng.
+  \usepackage{amsmath}
+  \Midterm % 中間発表/Midterm Presentation (最終発表時はコメントアウト)
+  \Hiduke{2018年X月XX日} % 発表日/Date
+  \Kosu{情報通信システムコース} % 講座/コース
+  \Bangou{1731020} % 学籍番号/Number
+  \Shimei{井田 恒太郎} % 氏名/Name
+  \Daimoku{XXXXXXXX} % 題目/Title
+  \Pshidou{キットスワン ナッタポン 助教} % 主指導教官
+  \Sshidou{} % 副指導教官
+  
+%%%%%%    TEXT START    %%%%%% 
+\begin{document} 
+\Title
+\section{XX}
+
+\section{XX}
+
+\subsection{ドメイン間の光路供給}
+XXXXX\\
+
+{\large \bf 目的関数}%%%%%%%%%%%%%%%%%%%%%%目的関数%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{equation}
+min \sum_{n \in N} \sum_{f \in F} \sum_{l^{ij}_{km} \in E}(yp^{nij}_{kmf} + yb^{nij}_{kmf})
+\end{equation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%目的関数%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{SDS Strategy}
+XXXXXXXXX\\
+{\large \bf 制約条件}
+
+\begin{equation}%%%%%%%%%%%%%%%%%%%%制約条件その1%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\sum_{f \in F} (p^{nij}_{km} \times xp^{nij}_{kmf})= 
+\begin{cases}
+1 & (p^{nij}_{km} = 1)\\
+0 & (otherwise)
+\end{cases}
+\\n \in N, l^{ij}_{km} \in E \nonumber
+%\sum_{(j,m):l^{ij}_{km}\in E}x^{nij}_{km} - \sum_{(j,m):l^{ji}_{mk}\in E}x^{nji}_{mk}= \nonumber \\
+%\begin{cases}
+%r_n, & if\;\;\;\;v^i_k=s_n\\
+%-r_n, & if\;\;\;\;v^i_k = d_n,n \in N\\
+%0, & otherwise
+%\end{cases}
+\end{equation}%%%%%%%%%%%%%%%%%%%%%%%制約条件その1%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{equation}%%%%%%%%%%%%%%%%%%%%%%制約条件その2%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\sum_{f \in F} (b^{nij}_{km} \times xb^{nij}_{kmf})= 
+\begin{cases}
+1 & (b^{nij}_{km} = 1)\\*
+0 & (otherwise)
+\end{cases}
+\\* n \in N, l^{ij}_{km} \in E \nonumber
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%制約条件その2%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\sum_{(j,m):l^{ij}_{km}\in E}y^{nij}_{km} - \sum_{(j,m):l^{ji}_{mk}\in E}y^{nji}_{mk}= \nonumber \\
+%\begin{cases}
+%r_n, & if\;\;\;\;v^i_k=s_n\\
+%-r_n, & if\;\;\;\;v^i_k = d_n,n \in N\\
+%0, & otherwise
+%\end{cases}
+\end{equation}
+
+\begin{eqnarray}%%%%%%%%%%%%%%%%%%%%%%制約条件その3%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+xp^{nij}_{kmf} \leq yp^{nij}_{kmf}, n \in N, l^{ij}_{km} \in E, \\
+f \in \{0, ... , |F|-r(n)\},f' \in \{f, ... ,f + r(n)-1\}\nonumber
+%\sum_{n\in N}(x^{nij}_{km}+y^{nij}_{km})\leq C^G_{ij,km},l^{ij}_{km} \in E\\
+%p^{nij}_{km}+b^{nij}_{km} \leq 1, n\in N,l^{ij}_{km}\in E\\
+%\sum_{(k,m):l^{ij}_{km} \in E}p^{nij}_{km}= \sum_{(k,m):l^{ij}_{km} \in E} b^{nij}_{km}\nonumber \\
+%n \in N ,i \in D, j \in D, i \neq j
+\end{eqnarray}%%%%%%%%%%%%%%%%%%%%%%制約条件その3%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{eqnarray}%%%%%%%%%%%%%%%%%%%%制約条件その4%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+xb^{nij}_{kmf} \leq yb^{nij}_{kmf}, n \in N, l^{ij}_{km} \in E, \\
+f \in \{0, ... , |F|-r(n)\},f' \in \{f, ... ,f + r(n)-1\}\nonumber
+%\sum_{l^{ij}_{km}\in E}p^{nij}_{km}\leq \sum_{l^{ij}_{km}\in E}b^{nij}_{km},n n\in N\\
+%y^{nij}_{km}\leq p^{mij}_{km}C^G_{ij,km},n\in N ,l^{ij}_{km} \in E\\
+%y^{nij}_{km}\le p^{mij}_{km},n \in N, l^{ij}_{km}\in E\\
+%y^{nij}_{km}\leq b^{mij}_{km}C^G_{ij,km},n\in N ,l^{ij}_{km} \in E\\
+%y^{nij}_{km}\le b^{mij}_{km},n \in N, l^{ij}_{km}\in E\\
+%x^{nij} \in \{0,1,2,・・・\} ,n \in N, l^{ij}_{km}\in E\\
+%y^{nij} \in \{0,1,2,・・・\} ,n \in N, l^{ij}_{km}\in E\\
+%p^{mij}_{km}\in  \{0,1\},n \in N, l^{ij}_{km}\in E
+\end{eqnarray}%%%%%%%%%%%%%%%%%%%%制約条件その4%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{eqnarray}%%%%%%%%%%%%%%%%%%%%制約条件その5%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+xp^{nij}_{kmf} = 0 & \forall l^{ij}_{km} \in E, \\
+f \in \{|F| - r(n)+1, \dots ,|F|-1\}\nonumber
+\end{eqnarray}%%%%%%%%%%%%%%%%%%%%制約条件その5%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{eqnarray}%%%%%%%%%%%%%%%%%%%%制約条件その6%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+xb^{nij}_{kmf} = 0 & \forall l^{ij}_{km} \in E, \\
+f \in \{|F| - r(n)+1, \dots ,|F|-1\}\nonumber
+\end{eqnarray}%%%%%%%%%%%%%%%%%%%%制約条件その6%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{equation}%%%%%%%%%%%%%%%%%%制約条件その7%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\sum_{n \in N} (yp^{nij}_{kmf} + yb^{nij}_{kmf}) \leq 1 \quad l^{ij}_{km} \in E, f \in F
+\end{equation}%%%%%%%%%%%%%%%%%%制約条件その7%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{eqnarray}%%%%%%%%%%%%%%%%%%%%%%制約条件その8%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\sum_{f \in F}\sum_{(j,m):l^{ij}_{km}\in E}yp^{nij}_{kmf} - \sum_{f \in F}\sum_{(j,m):l^{ji}_{mk}\in E}yp^{nji}_{mkf}= \nonumber \\
+\begin{cases}
+r_n & (v^i_k = s_n)\\
+-r_n & (v^i_k =d_n)\\
+0 & (otherwise)
+\end{cases}
+\end{eqnarray}%%%%%%%%%%%%%%%%%%%%%%制約条件その8%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{eqnarray}%%%%%%%%%%%%%%%%%%%%%%制約条件その9%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\sum_{f \in F}\sum_{(j,m):l^{ij}_{km}\in E}yb^{nij}_{kmf} - \sum_{f \in F}\sum_{(j,m):l^{ji}_{mk}\in E}yb^{nji}_{mkf}= \nonumber \\
+\begin{cases}
+r_n & (v^i_k = s_n)\\
+-r_n & (v^i_k =d_n)\\
+0 & (otherwise)
+\end{cases}
+\end{eqnarray}%%%%%%%%%%%%%%%%%%%%%%制約条件その9%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{equation}
+\sum_{f \in F} \sum_{n \in N}(yp^{nij}_{kmf}+yb^{nij}_{kmf}) \leq |F| \quad  l^{ij}_{km} \in E
+\end{equation}
+\begin{equation}
+p^{nij}_{km} + b^{nij}_{km} \leq 1 \quad n \in N \quad l^{ij}_{km} \in E
+\end{equation}
+\begin{equation}
+\sum_{(k,m):l^{ij}_{km}\in E}p^{nij}_{km} = \sum_{(k,m):l^{ij}_{km}\in E}b^{nij}_{km},\quad n \in N,i,j \in D, i\neq j
+\end{equation}
+\begin{equation}
+\sum_{l^{ij}_{km}\in E}p^{nij}_{km} \leq \sum_{l^{ij}_{km}\in E}b^{nij}_{km}
+\end{equation}
+\begin{equation}
+\sum_{f \in F}yp^{nij}_{kmf} \leq p^{nij}_{km} \times |F|,\quad n \in N,l^{ij}_{km}\in E
+\end{equation}
+\begin{equation}
+\sum_{f \in F}yp^{nij}_{kmf} \geq p^{nij}_{km},\quad n \in N,l^{ij}_{km} \in E
+\end{equation}
+\begin{equation}
+\sum_{f \in F}yb^{nij}_{kmf} \leq b^{nij}_{km} \times |F|,\quad n \in N,l^{ij}_{km}\in E
+\end{equation}
+\begin{equation}
+\sum_{f \in F}yb^{nij}_{kmf} \geq b^{nij}_{km},\quad n \in N,l^{ij}_{km} \in E
+\end{equation}
+\end{document}
+

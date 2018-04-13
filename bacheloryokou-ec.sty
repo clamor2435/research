@@ -1,0 +1,90 @@
+% 卒論発表会予稿 (latex2e) 用 style file by Kishi, N. (2004/9)
+% bug fixed (2005/1)
+% 卒論用に改良 (modified by Yusuke Satoh, 2011/9)
+% UTF-8 in character code
+% defined name modified (2012/07)
+% さらに卒論用に改造 (2012/09)
+
+\setlength{\textwidth}{170mm}
+\setlength{\textheight}{250mm}
+\setlength{\oddsidemargin}{-5mm}
+\setlength{\topmargin}{-20mm}
+%\setlength{\parindent}{0mm}
+
+\usepackage[fleqn]{amsmath}
+\usepackage{bm}
+\usepackage{graphicx}
+%\usepackage[dvipdfm]{hyperref}
+%\usepackage[dvips]{graphicx}
+\usepackage{cases}
+%\usepackage{empheq}
+
+\makeatletter
+\def\section{\@startsection {section}{1}{\z@}{3.5ex plus 1ex minus
+ .2ex}{0.6ex plus .1ex}{\normalfont\large\bfseries}}
+\def\subsection{\@startsection{subsection}{2}{\z@}{3.25ex plus 1ex minus
+ .2ex}{0.3ex plus .1ex}{\normalfont\normalsize\bfseries}}
+%\renewcommand{\thesection}{\arabic{section}\hspace{0mm}}
+\def\setcaption#1{\def\@captype{#1}}
+\long\def\@makecaption#1#2{\baselineskip=4truemm
+ \vskip 10pt
+ \setbox\@tempboxa\hbox{{\bf#1}~ #2}
+ \ifdim \wd\@tempboxa >\hsize{{\bf#1}~ #2}\par \else \hbox
+to\hsize{\hfil\box\@tempboxa\hfil}
+ \fi}
+%
+\mark{{}{}}
+\def\ps@myheadings{%
+\def\@oddfoot {\hf\Number-\thepage\hf}
+}
+\makeatother
+%\renewcommand{\thesection}{\arabic{section}.}
+
+\def\Hiduke#1{\def\Date{#1}} % 発表日
+\def\Kosu#1{\def\Course{#1}} % コース
+\def\Bangou#1{\def\Number{#1}} % 学籍番号
+\def\Shimei#1{\def\Name{#1}} % 氏名
+\def\Daimoku#1{\long\def\Subject{#1}} % 題目
+\def\Pshidou#1{\def\Psidou{#1}} % 主指導教官
+%\def\主指導教員#1{\def\Psidou{#1}}
+\def\Sshidou#1{\def\Ssidou{#1}} % 副指導教官
+%\def\副指導教員#1{\def\Ssidou{#1}}
+\def\Midterm{\def\Mid{中間}} % 中間発表
+
+\def\Null{}\def\Mid{}% \def\Mid{\Null} としては駄目!
+\def\vs#1{\vspace{#1\baselineskip}}
+\def\hf{\hspace*{\fill}}
+%
+\pagestyle{myheadings}
+\setlength{\columnsep}{8mm}% 段間の間隔
+\def\Title{
+\ifx\Mid\Null%
+\typeout{***********************************************************}
+\typeout{これは最終発表会用の書式です。中間発表会用の書式にする場合は }
+\typeout{\protect\Midterm を有効にして下さい。}
+\typeout{This is the format for final examination.}
+\typeout{Comment out \protect\Midterm if you need the format for interim presentation.}
+\typeout{***********************************************************}
+\else%
+\typeout{***********************************************************}
+\typeout{これは中間発表会用の書式です。修論発表会用の書式にする場合は }
+\typeout{\protect\Midterm を無効にして下さい。}
+\typeout{This is the format for interim presentation.}
+\typeout{Comment out \protect\Midterm if you need the format for final examination.}
+\typeout{***********************************************************}
+\fi
+\twocolumn[
+\hf\Date
+
+\hf\begin{tabular}{p{165mm}}
+\hline
+\hf 情報・通信工学専攻　修士論文{\Mid}発表会予稿\\
+\hf\scalebox{1}{\Large\textbf\Subject}\hf\\ % \scalebox{横倍率}
+\hf{\large 発表者　\Course コース　\Number　\Name}\hf\\
+\hf{\large 指導教員　\Psidou　\Ssidou}\hf\\
+\hline
+\end{tabular}\hf
+\vs{1}
+]
+}
+\endinput
