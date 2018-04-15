@@ -125,16 +125,16 @@ p^{nij}_{km} + b^{nij}_{km} \leq 1 \quad n \in N \quad l^{ij}_{km} \in E
 \sum_{l^{ij}_{km}\in E}p^{nij}_{km} \leq \sum_{l^{ij}_{km}\in E}b^{nij}_{km}
 \end{equation}
 \begin{equation}
-\sum_{f \in F}yp^{nij}_{kmf} \leq p^{nij}_{km} \times |F|,\quad n \in N,l^{ij}_{km}\in E
+\sum_{f \in F}\sum_{l^{ij}_{km}\in E}xp^{nij}_{kmf}=\sum_{l^{ij}_{km} \in E}xp^{nij}_{kmf}
 \end{equation}
 \begin{equation}
-\sum_{f \in F}yp^{nij}_{kmf} \geq p^{nij}_{km},\quad n \in N,l^{ij}_{km} \in E
+\sum_{f \in F}\sum_{l^{ij}_{km}\in E}xb^{nij}_{kmf}=\sum_{l^{ij}_{km} \in E}xb^{nij}_{kmf}
 \end{equation}
 \begin{equation}
-\sum_{f \in F}yb^{nij}_{kmf} \leq b^{nij}_{km} \times |F|,\quad n \in N,l^{ij}_{km}\in E
+\sum_{f \in F}xp^{nij}_{kmf} = \frac{1}{r(n)}\sum_{f\in F}yp^{nij}_{kmf}
 \end{equation}
 \begin{equation}
-\sum_{f \in F}yb^{nij}_{kmf} \geq b^{nij}_{km},\quad n \in N,l^{ij}_{km} \in E
+\sum_{f \in F}xb^{nij}_{kmf} = \frac{1}{r(n)}\sum_{f\in F}yb^{nij}_{kmf}
 \end{equation}
 \end{document}
 
