@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.6-141210-2.6 (utf8.euc) (TeX Live 2015/Debian) (preloaded format=platex 2018.4.13)  15 APR 2018 21:02
+This is e-pTeX, Version 3.14159265-p3.6-141210-2.6 (utf8.euc) (TeX Live 2015/Debian) (preloaded format=platex 2018.4.13)  15 APR 2018 21:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -173,24 +173,10 @@ LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <10> not available
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <10> not available
 (Font)              Font shape `JY1/gt/m/n' tried instead on input line 25.
 
-Overfull \hbox (3.9717pt too wide) detected at line 50
- $[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 p[] \OMS/cmsy/m/n/10 ^^B \OML/cmm/m/it/10
- xp[]\OT1/cmr/m/n/10 ) = [] [] []\OML/cmm/m/it/10 n \OMS/cmsy/m/n/10 2 \OML/cmm
-/m/it/10 N; l[] \OMS/cmsy/m/n/10 2 \OML/cmm/m/it/10 E$ 
- []
-
-
-Overfull \hbox (2.49251pt too wide) detected at line 66
- $[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 b[] \OMS/cmsy/m/n/10 ^^B \OML/cmm/m/it/10
- xb[]\OT1/cmr/m/n/10 ) = [][]  []\OML/cmm/m/it/10 n \OMS/cmsy/m/n/10 2 \OML/cmm
-/m/it/10 N; l[] \OMS/cmsy/m/n/10 2 \OML/cmm/m/it/10 E$ 
- []
-
-
-Overfull \hbox (18.6903pt too wide) detected at line 123
- $[] \OML/cmm/m/it/10 p[] \OT1/cmr/m/n/10 = [] \OML/cmm/m/it/10 b[];  n \OMS/cm
-sy/m/n/10 2 \OML/cmm/m/it/10 N; i; j \OMS/cmsy/m/n/10 2 \OML/cmm/m/it/10 D; i \
-OMS/cmsy/m/n/10 6\OT1/cmr/m/n/10 = \OML/cmm/m/it/10 j$  
+Overfull \hbox (47.78366pt too wide) detected at line 101
+ $[] [] \OML/cmm/m/it/10 xp[] \OT1/cmr/m/n/10 = [] [] \OML/cmm/m/it/10 xb[] n \
+OMS/cmsy/m/n/10 2 \OML/cmm/m/it/10 N;  i \OMS/cmsy/m/n/10 6\OT1/cmr/m/n/10 = \O
+ML/cmm/m/it/10 j$  
  []
 
 [1
@@ -200,10 +186,10 @@ OMS/cmsy/m/n/10 6\OT1/cmr/m/n/10 = \OML/cmm/m/it/10 j$
 Here is how much of TeX's memory you used:
  1329 strings out of 494865
  15237 string characters out of 6179769
- 88833 words of memory out of 5000000
+ 86833 words of memory out of 5000000
  4779 multiletter control sequences out of 15000+600000
  12858 words of font info for 50 fonts, out of 8000000 for 9000
  264 hyphenation exceptions out of 8191
  34i,12n,24p,238b,294s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on main.dvi (1 page, 6780 bytes).
+Output written on main.dvi (1 page, 6664 bytes).

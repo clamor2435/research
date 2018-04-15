@@ -35,36 +35,12 @@ XXXXXXXXX\\
 {\large \bf 制約条件}
 
 \begin{equation}%%%%%%%%%%%%%%%%%%%%制約条件その1%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\sum_{f \in F} (p^{nij}_{km} \times xp^{nij}_{kmf})= 
-\begin{cases}
-1 & (p^{nij}_{km} = 1)\\
-0 & (otherwise)
-\end{cases}
-\\n \in N, l^{ij}_{km} \in E \nonumber
-%\sum_{(j,m):l^{ij}_{km}\in E}x^{nij}_{km} - \sum_{(j,m):l^{ji}_{mk}\in E}x^{nji}_{mk}= \nonumber \\
-%\begin{cases}
-%r_n, & if\;\;\;\;v^i_k=s_n\\
-%-r_n, & if\;\;\;\;v^i_k = d_n,n \in N\\
-%0, & otherwise
-%\end{cases}
+\sum_{f \in F}xp^{nij}_{kmf} \leq 1 \quad l^{ij}_{km} \in E
 \end{equation}%%%%%%%%%%%%%%%%%%%%%%%制約条件その1%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{equation}%%%%%%%%%%%%%%%%%%%%%%制約条件その2%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\sum_{f \in F} (b^{nij}_{km} \times xb^{nij}_{kmf})= 
-\begin{cases}
-1 & (b^{nij}_{km} = 1)\\*
-0 & (otherwise)
-\end{cases}
-\\* n \in N, l^{ij}_{km} \in E \nonumber
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%制約条件その2%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\sum_{(j,m):l^{ij}_{km}\in E}y^{nij}_{km} - \sum_{(j,m):l^{ji}_{mk}\in E}y^{nji}_{mk}= \nonumber \\
-%\begin{cases}
-%r_n, & if\;\;\;\;v^i_k=s_n\\
-%-r_n, & if\;\;\;\;v^i_k = d_n,n \in N\\
-%0, & otherwise
-%\end{cases}
+\sum_{f \in F}xb^{nij}_{kmf} \leq 1 \quad l^{ij}_{km}\in E
 \end{equation}
-
 \begin{eqnarray}%%%%%%%%%%%%%%%%%%%%%%制約条件その3%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 xp^{nij}_{kmf} \leq yp^{nij}_{kmf}, n \in N, l^{ij}_{km} \in E, \\
 f \in \{0, ... , |F|-r(n)\},f' \in \{f, ... ,f + r(n)-1\}\nonumber
@@ -116,13 +92,16 @@ r_n & (v^i_k = s_n)\\
 \sum_{f \in F} \sum_{n \in N}(yp^{nij}_{kmf}+yb^{nij}_{kmf}) \leq |F| \quad  l^{ij}_{km} \in E
 \end{equation}
 \begin{equation}
-p^{nij}_{km} + b^{nij}_{km} \leq 1 \quad n \in N \quad l^{ij}_{km} \in E
+\sum{f \in F}(xp^{nij}_{kmf} + xb^{nij}_{kmf}) \leq 1 \quad n \in N \quad l^{ij}_{km} \in E
+%p^{nij}_{km} + b^{nij}_{km} \leq 1 \quad n \in N \quad l^{ij}_{km} \in E
 \end{equation}
 \begin{equation}
-\sum_{(k,m):l^{ij}_{km}\in E}p^{nij}_{km} = \sum_{(k,m):l^{ij}_{km}\in E}b^{nij}_{km},\quad n \in N,i,j \in D, i\neq j
+\sum_{(k,m):l^{ij}_{km} \in E}\sum_{f in F}xp^{nij}_{kmf} = \sum_{(k,m):l^{ij}_{km}\in E}\sum_{f in F}xb^{nij}_{kmf}\quad n \in N,\quad i \neq j
+%\sum_{(k,m):l^{ij}_{km}\in E}p^{nij}_{km} = \sum_{(k,m):l^{ij}_{km}\in E}b^{nij}_{km},\quad n \in N,i,j \in D, i\neq j
 \end{equation}
 \begin{equation}
-\sum_{l^{ij}_{km}\in E}p^{nij}_{km} \leq \sum_{l^{ij}_{km}\in E}b^{nij}_{km}
+\sum_{l^{ij}_{km}\in E}\sum_{f in F}xp^{nij}_{kmf} \leq \sum_{l^{ij}_{km}\in E}\sum{f in F}xb^{nij}_{kmf}\quad n \in N
+%\sum_{l^{ij}_{km}\in E}p^{nij}_{km} \leq \sum_{l^{ij}_{km}\in E}b^{nij}_{km}
 \end{equation}
 \begin{equation}
 \sum_{f \in F}\sum_{l^{ij}_{km}\in E}xp^{nij}_{kmf}=\sum_{l^{ij}_{km} \in E}xp^{nij}_{kmf}
