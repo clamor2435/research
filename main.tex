@@ -72,6 +72,25 @@ f \in \{|F| - r(n)+1, \dots ,|F|-1\}\nonumber
 \begin{equation}%%%%%%%%%%%%%%%%%%制約条件その7%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \sum_{n \in N} (yp^{nij}_{kmf} + yb^{nij}_{kmf}) \leq 1 \quad l^{ij}_{km} \in E, f \in F
 \end{equation}%%%%%%%%%%%%%%%%%%制約条件その7%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{equation}
+\sum_{f \in F}\sum_{l^{ij}_{km}\in E}xp^{nij}_{kmf} = p(n)\quad n \in N
+\end{equation}
+\begin{equation}
+\sum_{f \in F}\sum_{l^{ij}_{km}\in E}xp^{nij}_{kmf} = b(n)\quad n \in N
+\end{equation}
+\\
+\begin{equation}
+\sum_{f \in F}xp^{nij}_{kmf} = \frac{1}{r(n)}\sum_{f\in F}yp^{nij}_{kmf}\quad n \in N,\quad l^{ij}_{km} \in E
+\end{equation}
+\begin{equation}
+\sum_{f \in F}xb^{nij}_{kmf} = \frac{1}{r(n)}\sum_{f\in F}yb^{nij}_{kmf}\quad n \in N,\quad l^{ij}_{km} \in E
+\end{equation}
+\begin{equation}
+\sum_{l^{ij}_{km}\in E}xp^{nij}_{kmf} = p(n)\quad f \in F,\quad n \in N
+\end{equation}
+\begin{equation}
+\sum_{l^{ij}_{km}\in E}xp^{nij}_{kmf} = b(n)\quad f \in F,\quad n \in N
+\end{equation}
 \begin{eqnarray}%%%%%%%%%%%%%%%%%%%%%%制約条件その8%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \sum_{f \in F}\sum_{(j,m):l^{ij}_{km}\in E}yp^{nij}_{kmf} - \sum_{f \in F}\sum_{(j,m):l^{ji}_{mk}\in E}yp^{nji}_{mkf}= \nonumber \\
 \begin{cases}
@@ -92,28 +111,20 @@ r_n & (v^i_k = s_n)\\
 \sum_{f \in F} \sum_{n \in N}(yp^{nij}_{kmf}+yb^{nij}_{kmf}) \leq |F| \quad  l^{ij}_{km} \in E
 \end{equation}
 \begin{equation}
-\sum{f \in F}(xp^{nij}_{kmf} + xb^{nij}_{kmf}) \leq 1 \quad n \in N \quad l^{ij}_{km} \in E
+\sum_{f \in F}(xp^{nij}_{kmf} + xb^{nij}_{kmf}) \leq 1 \quad n \in N \quad l^{ij}_{km} \in E
 %p^{nij}_{km} + b^{nij}_{km} \leq 1 \quad n \in N \quad l^{ij}_{km} \in E
 \end{equation}
 \begin{equation}
-\sum_{(k,m):l^{ij}_{km} \in E}\sum_{f in F}xp^{nij}_{kmf} = \sum_{(k,m):l^{ij}_{km}\in E}\sum_{f in F}xb^{nij}_{kmf}\quad n \in N,\quad i \neq j
+\sum_{(k,m):l^{ij}_{km} \in E}\sum_{f in F}xp^{nij}_{kmf} = \sum_{(k,m):l^{ij}_{km}\in E}\sum_{f \in F}xb^{nij}_{kmf}\quad n \in N,\quad i \neq j
 %\sum_{(k,m):l^{ij}_{km}\in E}p^{nij}_{km} = \sum_{(k,m):l^{ij}_{km}\in E}b^{nij}_{km},\quad n \in N,i,j \in D, i\neq j
 \end{equation}
 \begin{equation}
-\sum_{l^{ij}_{km}\in E}\sum_{f in F}xp^{nij}_{kmf} \leq \sum_{l^{ij}_{km}\in E}\sum{f in F}xb^{nij}_{kmf}\quad n \in N
+\sum_{l^{ij}_{km}\in E}\sum_{f \in F}xp^{nij}_{kmf} \leq \sum_{l^{ij}_{km}\in E}\sum_{f \in F}xb^{nij}_{kmf}\quad n \in N
 %\sum_{l^{ij}_{km}\in E}p^{nij}_{km} \leq \sum_{l^{ij}_{km}\in E}b^{nij}_{km}
 \end{equation}
-\begin{equation}
-\sum_{f \in F}\sum_{l^{ij}_{km}\in E}xp^{nij}_{kmf}=\sum_{l^{ij}_{km} \in E}xp^{nij}_{kmf}
-\end{equation}
-\begin{equation}
-\sum_{f \in F}\sum_{l^{ij}_{km}\in E}xb^{nij}_{kmf}=\sum_{l^{ij}_{km} \in E}xb^{nij}_{kmf}
-\end{equation}
-\begin{equation}
-\sum_{f \in F}xp^{nij}_{kmf} = \frac{1}{r(n)}\sum_{f\in F}yp^{nij}_{kmf}
-\end{equation}
-\begin{equation}
-\sum_{f \in F}xb^{nij}_{kmf} = \frac{1}{r(n)}\sum_{f\in F}yb^{nij}_{kmf}
-\end{equation}
+
+\newpage
+\subsection{各パラメータ・変数・式の説明}
+$N$はリクエスト数の集合、$F$はインデックス数の集合、$E$はリンクの集合を表している。また、$l^{ij}_{km}$はドメイン$i$のノード$k$からドメイン$j$のノード$m$までのリンクを表している。$xp,xb$はプライマリパス、バックアップパスで使用しているインデックスの先頭を表す変数で、$yp,yb$がプライマリパス、バックアップパスで使用しているインデックスその物を表す変数、$p,b$がプライマリパスとバックアップパスのホップ数を表す変数である。(1)が目的関数で、使用インデックス数を最小化するパスを供給する。(2)~(20)が制約条件で(2)~(10)が変数の制約条件、(11)~(20)がフロー制約条件となっている。(2),(3)式は先頭となるインデックスが一つであることを示している。(4)(5)式はインデックスの連続性を示し、(6),(7)式はそのリクエストが使用するインデックスの先頭になり得ない部分にインデックスが割り当てられないことを示す。(8)式はプライマリパスとバックアップパスが同じリンクの同じインデックスを使用しないことを示す。(9),(10)式はそのリクエストのホップ数を示す。(11),(12)式は$xp,xb$と$yp,yb$の間の関係式で、(13)(14)式がインデックスの一貫性を示している。(15),(16)式はノードに対する流入量と流出量の関係式で始点、終点、それ以外の三つで場合分けを行っている。(17)式がリンクで使用しているインデックス数の最大値を示し、(18)式が、リンク重複を制限している。(19)式はSame Domain Sequence Strategyを示す式で、プライマリパス、バックアップパスが同じドメインシーケンスを持つことを示す。(20)式がホップ数の小さい方を優先してプライマリパスに割り当てることを示す。
 \end{document}
 
