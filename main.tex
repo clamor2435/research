@@ -33,13 +33,21 @@
 %複数行にまたがる数式の式番号は一番最後の行に挿入すること
 %とにかく詳しく記述すること。くどい位で丁度いい
 \subsection{ドメイン間の光路供給}
+<<<<<<< HEAD
 整数線形計画問題（Integer Linear Programming,ILP）で使用するパラメータ、式、変数の説明を行う。エラスティック光ネットワークにおけるグラフは$D$個のドメインを所有し、その$i$番目のドメインが$n^i$個の光ノードを、その内$b^i$個の境界ノードを所有している。ドメイン自体も部分グラフ$G^i (V^i ,L^i)$を有しており、 $V^i = \{v^i_1,v^i_2, \dots \} $はドメイン$i$の持つ光ノードを表し、$L^i = \{l^{ii}_{jk}\}(1\leq i \leq D,1\leq j,k \leq n^i)$はドメイン$i$の持つノード$v^i_j$とノード$v^i_k$との間の光リンクを表す。その光リンクもエラスティック光ネットワークに必要なインデックス数のパラメータを持っており、その値の要素を$F=\{1,2,\dots f\}$としている。また、ドメイン外部にもリンクは存在し$\{l^{ij}_{km}\}(1\leq i,j\leq D,1\leq k\leq b^i,1\leq m \leq b^j)$で表される。全てのリンクは同一のインデックス$|F|$個を所有している。\\
+=======
+整数線形計画問題（Integer Linear Programming,ILP）で使用するパラメータ、式、変数の説明を行う。エラスティック光ネットワークにおけるグラフは$|D|$個のドメインを所有し、その$i$番目のドメインが$n^i$個の光ノードを、その内$b^i$個の境界ノードを所有している。ドメイン自体も部分グラフ$G^i (V^i ,L^i)$を有しており、 $V^i = \{v^i_1,v^i_2, \dots \} $はドメイン$i$の持つ光ノードを表し、$L^i = \{l^{ii}_{jk}\}(1\leq i \leq D,1\leq j,k \leq n^i)$はドメイン$i$の持つノード$v^i_j$とノード$v^i_k$との間の光リンクを表す。その光リンクもエラスティック光ネットワークに必要なインデックス数のパラメータを持っており、その値の要素を$F=\{1,2,\dots f\}$としている。また、ドメイン外部にもリンクは存在し$\{l^{ij}_{km}\}(1\leq i,j\leq D,1\leq k\leq b^i,1\leq m \leq b^j)$で表される。全てのリンクは同一のインデックス$|F|$個を所有している。\\
+>>>>>>> c9b614b3dcc2bd03dd91739a538921ebe29d90cb
 ドメイン間ルーティングの要求に関するパラメータの定義は次の通り。要求の総数は$N=\{1,2,\dots n\}$で表され、その要求それぞれも三つの要素$(s_n,d_n,r_n)$からなり、$s_n$は発ノード、$d_n$は着ノード、$r_n$は必要インデックス数を表している。ドメイン内ルーティングの要求に関するパラメータの定義も同様に、要求の総数を$N'=\{1,2,\dots n'\}$と表し、その要求それぞれの要素も$(s_n',d_n',r_n')$からなり、$s_n$は発ノード、$d_n$は着ノード、$r_n$は必要インデックス数を表している。\\
 光パスの供給を行う決定変数の定義は次の通り。変数$x_{p^{nij}_{kmf}}$は$n$番目の要求がプライマリパスとしてリンク$l^{ij}_{km}$のインデックス$f$を先頭として使用しているかどうかを表す二進数変数で、1の時に使用していることを表し、0の時に使用していないことを表す。変数$x_{b^{nij}_{kmf}}$は$n$番目の要求がバックアップパスとしてリンク$l^{ij}_{km}$のインデックス$f$を先頭として使用しているかどうかを表す二進数変数で、1の時に使用していることを表し、0の時に使用していないことを表す。変数$y_{p^{nij}_{kmf}}$は$n$番目の要求がプライマリパスとしてリンク$l^{ij}_{km}$のインデックス$f$を使用しているかどうかを表す二進数変数で、1の時に使用していることを表し、0の時に使用していないことを表す。変数$y_{b^{nij}_{kmf}}$は$n$番目の要求がバックアップパスとしてリンク$l^{ij}_{km}$のインデックス$f$を使用しているかどうかを表す二進数変数で、1の時に使用していることを表し、0の時に使用していないことを表す。\\
 
 {\large \bf 目的関数}
 \begin{equation}%式(1)
+<<<<<<< HEAD
 min \sum_{n \in N} \sum_{f \in F} \sum_{l^{ij}_{km} \in E}(y_{p^{nij}_{kmf}} + y_{b^{nij}_{kmf}})
+=======
+\mbox{min} \sum_{n \in N} \sum_{f \in F} \sum_{l^{ij}_{km} \in E}(y_{p^{nij}_{kmf}} + y_{b^{nij}_{kmf}})
+>>>>>>> c9b614b3dcc2bd03dd91739a538921ebe29d90cb
 \end{equation}
 
 \subsubsection{SDS Strategy}
@@ -47,6 +55,7 @@ XXXXXXXXX\\
 {\large \bf 制約条件}
 
 \begin{equation}%式(2)
+<<<<<<< HEAD
 \sum_{f \in F}x_{p^{nij}_{kmf}} \leq 1,\quad l^{ij}_{km} \in E
 \end{equation}
 \begin{equation}%式(3)
@@ -67,6 +76,28 @@ f \in \{|F| - r_n+1, \dots ,|F|-1\}
 \begin{eqnarray}%式(7)
 x_{b^{nij}_{kmf}} = 0 & \forall l^{ij}_{km},\in E,\nonumber\\ 
 f \in \{|F| - r_n+1, \dots ,|F|-1\}
+=======
+\sum_{f \in F}x_{p^{nij}_{kmf}} \leq 1,\quad n \in N, l^{ij}_{km} \in E
+\end{equation}
+\begin{equation}%式(3)
+\sum_{f \in F}x_{b^{nij}_{kmf}} \leq 1,\quad n \in N, l^{ij}_{km}\in E
+\end{equation}
+\begin{eqnarray}%式(4)
+&x_{p^{nij}_{kmf}} \leq y_{p^{nij}_{kmf}}, n \in N, l^{ij}_{km} \in E, \nonumber\\
+&f \in \{0, ... , |F|-r_n)\},f' \in \{f, ... ,f +r_n -1\}
+\end{eqnarray}
+\begin{eqnarray}%式(5)
+&x_{b^{nij}_{kmf}} \leq y_{b^{nij}_{kmf}}, n \in N, l^{ij}_{km} \in E, \nonumber \\
+&f \in \{0, ... , |F|-r_n\},f' \in \{f, ... ,f + r_n -1\}
+\end{eqnarray}
+\begin{eqnarray}%式(6)
+&x_{p^{nij}_{kmf}} = 0 & \forall l^{ij}_{km},\in E, \nonumber\\
+&f \in \{|F| - r_n+1, \dots ,|F|-1\}
+\end{eqnarray}
+\begin{eqnarray}%式(7)
+&x_{b^{nij}_{kmf}} = 0 & \forall l^{ij}_{km},\in E,\nonumber\\ 
+&f \in \{|F| - r_n+1, \dots ,|F|-1\}
+>>>>>>> c9b614b3dcc2bd03dd91739a538921ebe29d90cb
 \end{eqnarray}
 \begin{equation}%式(8)
 \sum_{n \in N} (y_{p^{nij}_{kmf}} + y_{b^{nij}_{kmf}}) \leq 1,\quad l^{ij}_{km} \in E, f \in F
