@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.7.1-161114-2.6 (utf8.sjis) (TeX Live 2017/W32TeX) (preloaded format=platex 2018.1.16)  1 MAY 2018 17:25
+This is e-pTeX, Version 3.14159265-p3.7.1-161114-2.6 (utf8.sjis) (TeX Live 2017/W32TeX) (preloaded format=platex 2018.1.16)  1 MAY 2018 22:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -172,22 +172,22 @@ LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <10> not available
 (Font)              Font shape `JT1/gt/m/n' tried instead on input line 22.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <10> not available
 (Font)              Font shape `JY1/gt/m/n' tried instead on input line 22.
-
-Overfull \hbox (11.68459pt too wide) in alignment at lines 50--86
- [][][] []
- []
-
 [1
 
 
-] [2] (./main_1.aux) ) 
+]
+Overfull \hbox (11.68459pt too wide) in alignment at lines 50--81
+ [][][] []
+ []
+
+[2] (./main_1.aux) ) 
 Here is how much of TeX's memory you used:
  1373 strings out of 493638
  15911 string characters out of 6151701
- 106601 words of memory out of 5000000
+ 104601 words of memory out of 5000000
  5000 multiletter control sequences out of 15000+600000
  12858 words of font info for 50 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
  34i,12n,24p,1185b,292s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on main_1.dvi (2 pages, 18580 bytes).
+Output written on main_1.dvi (2 pages, 18736 bytes).
