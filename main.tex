@@ -21,110 +21,99 @@
 \section{XX}
 
 \section{XX}
-
+%順番
+%1，どのように光路を供給するのかを簡単に記述
+%2，各パラメーターの取り得る値の範囲、説明
+%3，各変数の取り得る値の範囲、説明
+%4，目的関数と制約条件を正確に記述
+%5，4で記述した条件式の説明を細かく行う
+%
+%注意事項
+%文字式や上付き、下付き文字は必ず統一すること
+%複数行にまたがる数式の式番号は一番最後の行に挿入すること
+%とにかく詳しく記述すること。くどい位で丁度いい
 \subsection{ドメイン間の光路供給}
-XXXXX\\
+整数線形計画問題（Integer Linear Programming,ILP）で使用するパラメータ、式、変数の説明を行う。エラスティック光ネットワークにおけるグラフは$D$個のドメインを所有し、その$i$番目のドメインが$n^i$個の光ノードを、その内$b^i$個の境界ノードを所有している。ドメイン自体も部分グラフ$G^i (V^i ,L^i)$を有しており、 $V^i = \{v^i_1,v^i_2, \dots \} $はドメイン$i$の持つ光ノードを表し、$L^i = \{l^{ii}_{jk}\}(1\leq i \leq D,1\leq j,k \leq n^i)$はドメイン$i$の持つノード$v^i_j$とノード$v^i_k$との間の光リンクを表す。その光リンクもエラスティック光ネットワークに必要なインデックス数のパラメータを持っており、その値の要素を$F=\{1,2,\dots f\}$としている。また、ドメイン外部にもリンクは存在し$\{l^{ij}_{km}\}(1\leq i,j\leq D,1\leq k\leq b^i,1\leq m \leq b^j)$で表される。全てのリンクは同一のインデックス$|F|$個を所有している。\\
+ドメイン間ルーティングの要求に関するパラメータの定義は次の通り。要求の総数は$N=\{1,2,\dots n\}$で表され、その要求それぞれも三つの要素$(s_n,d_n,r_n)$からなり、$s_n$は発ノード、$d_n$は着ノード、$r_n$は必要インデックス数を表している。ドメイン内ルーティングの要求に関するパラメータの定義も同様に、要求の総数を$N'=\{1,2,\dots n'\}$と表し、その要求それぞれの要素も$(s_n',d_n',r_n')$からなり、$s_n$は発ノード、$d_n$は着ノード、$r_n$は必要インデックス数を表している。\\
+光パスの供給を行う決定変数の定義は次の通り。変数$x_{p^{nij}_{kmf}}$は$n$番目の要求がプライマリパスとしてリンク$l^{ij}_{km}$のインデックス$f$を先頭として使用しているかどうかを表す二進数変数で、1の時に使用していることを表し、0の時に使用していないことを表す。変数$x_{b^{nij}_{kmf}}$は$n$番目の要求がバックアップパスとしてリンク$l^{ij}_{km}$のインデックス$f$を先頭として使用しているかどうかを表す二進数変数で、1の時に使用していることを表し、0の時に使用していないことを表す。変数$y_{p^{nij}_{kmf}}$は$n$番目の要求がプライマリパスとしてリンク$l^{ij}_{km}$のインデックス$f$を使用しているかどうかを表す二進数変数で、1の時に使用していることを表し、0の時に使用していないことを表す。変数$y_{b^{nij}_{kmf}}$は$n$番目の要求がバックアップパスとしてリンク$l^{ij}_{km}$のインデックス$f$を使用しているかどうかを表す二進数変数で、1の時に使用していることを表し、0の時に使用していないことを表す。\\
 
-{\large \bf 目的関数}%%%%%%%%%%%%%%%%%%%%%%目的関数%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{equation}
-min \sum_{n \in N} \sum_{f \in F} \sum_{l^{ij}_{km} \in E}(yp^{nij}_{kmf} + yb^{nij}_{kmf})
+{\large \bf 目的関数}
+\begin{equation}%式(1)
+min \sum_{n \in N} \sum_{f \in F} \sum_{l^{ij}_{km} \in E}(y_{p^{nij}_{kmf}} + y_{b^{nij}_{kmf}})
 \end{equation}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%目的関数%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \subsubsection{SDS Strategy}
 XXXXXXXXX\\
 {\large \bf 制約条件}
 
-\begin{equation}%%%%%%%%%%%%%%%%%%%%制約条件その1%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\sum_{f \in F}xp^{nij}_{kmf} \leq 1 \quad l^{ij}_{km} \in E
-\end{equation}%%%%%%%%%%%%%%%%%%%%%%%制約条件その1%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{equation}%%%%%%%%%%%%%%%%%%%%%%制約条件その2%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\sum_{f \in F}xb^{nij}_{kmf} \leq 1 \quad l^{ij}_{km}\in E
+\begin{equation}%式(2)
+\sum_{f \in F}x_{p^{nij}_{kmf}} \leq 1,\quad l^{ij}_{km} \in E
 \end{equation}
-\begin{eqnarray}%%%%%%%%%%%%%%%%%%%%%%制約条件その3%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-xp^{nij}_{kmf} \leq yp^{nij}_{kmf}, n \in N, l^{ij}_{km} \in E, \\
-f \in \{0, ... , |F|-r(n)\},f' \in \{f, ... ,f + r(n)-1\}\nonumber
-%\sum_{n\in N}(x^{nij}_{km}+y^{nij}_{km})\leq C^G_{ij,km},l^{ij}_{km} \in E\\
-%p^{nij}_{km}+b^{nij}_{km} \leq 1, n\in N,l^{ij}_{km}\in E\\
-%\sum_{(k,m):l^{ij}_{km} \in E}p^{nij}_{km}= \sum_{(k,m):l^{ij}_{km} \in E} b^{nij}_{km}\nonumber \\
-%n \in N ,i \in D, j \in D, i \neq j
-\end{eqnarray}%%%%%%%%%%%%%%%%%%%%%%制約条件その3%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{eqnarray}%%%%%%%%%%%%%%%%%%%%制約条件その4%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-xb^{nij}_{kmf} \leq yb^{nij}_{kmf}, n \in N, l^{ij}_{km} \in E, \\
-f \in \{0, ... , |F|-r(n)\},f' \in \{f, ... ,f + r(n)-1\}\nonumber
-%\sum_{l^{ij}_{km}\in E}p^{nij}_{km}\leq \sum_{l^{ij}_{km}\in E}b^{nij}_{km},n n\in N\\
-%y^{nij}_{km}\leq p^{mij}_{km}C^G_{ij,km},n\in N ,l^{ij}_{km} \in E\\
-%y^{nij}_{km}\le p^{mij}_{km},n \in N, l^{ij}_{km}\in E\\
-%y^{nij}_{km}\leq b^{mij}_{km}C^G_{ij,km},n\in N ,l^{ij}_{km} \in E\\
-%y^{nij}_{km}\le b^{mij}_{km},n \in N, l^{ij}_{km}\in E\\
-%x^{nij} \in \{0,1,2,・・・\} ,n \in N, l^{ij}_{km}\in E\\
-%y^{nij} \in \{0,1,2,・・・\} ,n \in N, l^{ij}_{km}\in E\\
-%p^{mij}_{km}\in  \{0,1\},n \in N, l^{ij}_{km}\in E
-\end{eqnarray}%%%%%%%%%%%%%%%%%%%%制約条件その4%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{eqnarray}%%%%%%%%%%%%%%%%%%%%制約条件その5%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-xp^{nij}_{kmf} = 0 & \forall l^{ij}_{km} \in E, \\
-f \in \{|F| - r(n)+1, \dots ,|F|-1\}\nonumber
-\end{eqnarray}%%%%%%%%%%%%%%%%%%%%制約条件その5%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{eqnarray}%%%%%%%%%%%%%%%%%%%%制約条件その6%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-xb^{nij}_{kmf} = 0 & \forall l^{ij}_{km} \in E, \\
-f \in \{|F| - r(n)+1, \dots ,|F|-1\}\nonumber
-\end{eqnarray}%%%%%%%%%%%%%%%%%%%%制約条件その6%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{equation}%%%%%%%%%%%%%%%%%%制約条件その7%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\sum_{n \in N} (yp^{nij}_{kmf} + yb^{nij}_{kmf}) \leq 1 \quad l^{ij}_{km} \in E, f \in F
-\end{equation}%%%%%%%%%%%%%%%%%%制約条件その7%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{equation}
-\sum_{f \in F}\sum_{l^{ij}_{km}\in E}xp^{nij}_{kmf} = p(n)\quad n \in N
+\begin{equation}%式(3)
+\sum_{f \in F}x_{b^{nij}_{kmf}} \leq 1,\quad l^{ij}_{km}\in E
 \end{equation}
-\begin{equation}
-\sum_{f \in F}\sum_{l^{ij}_{km}\in E}xp^{nij}_{kmf} = b(n)\quad n \in N
+\begin{eqnarray}%式(4)
+x_{p^{nij}_{kmf}} \leq y_{p^{nij}_{kmf}}, n \in N, l^{ij}_{km} \in E, \nonumber\\
+f \in \{0, ... , |F|-r_n)\},f' \in \{f, ... ,f +r_n -1\}
+\end{eqnarray}
+\begin{eqnarray}%式(5)
+x_{b^{nij}_{kmf}} \leq y_{b^{nij}_{kmf}}, n \in N, l^{ij}_{km} \in E, \nonumber \\
+f \in \{0, ... , |F|-r_n\},f' \in \{f, ... ,f + r_n -1\}
+\end{eqnarray}
+\begin{eqnarray}%式(6)
+x_{p^{nij}_{kmf}} = 0 & \forall l^{ij}_{km},\in E, \nonumber\\
+f \in \{|F| - r_n+1, \dots ,|F|-1\}
+\end{eqnarray}
+\begin{eqnarray}%式(7)
+x_{b^{nij}_{kmf}} = 0 & \forall l^{ij}_{km},\in E,\nonumber\\ 
+f \in \{|F| - r_n+1, \dots ,|F|-1\}
+\end{eqnarray}
+\begin{equation}%式(8)
+\sum_{n \in N} (y_{p^{nij}_{kmf}} + y_{b^{nij}_{kmf}}) \leq 1,\quad l^{ij}_{km} \in E, f \in F
 \end{equation}
-\\
-\begin{equation}
-\sum_{f \in F}xp^{nij}_{kmf} = \frac{1}{r(n)}\sum_{f\in F}yp^{nij}_{kmf}\quad n \in N,\quad l^{ij}_{km} \in E
+\begin{equation}%式(9)
+\sum_{f \in F}x_{p^{nij}_{kmf}} = \frac{1}{r_n}\sum_{f\in F}y_{p^{nij}_{kmf}},\quad n \in N,\quad l^{ij}_{km} \in E
 \end{equation}
-\begin{equation}
-\sum_{f \in F}xb^{nij}_{kmf} = \frac{1}{r(n)}\sum_{f\in F}yb^{nij}_{kmf}\quad n \in N,\quad l^{ij}_{km} \in E
+\begin{equation}%式(10)
+\sum_{f \in F}x_{b^{nij}_{kmf}} = \frac{1}{r_n}\sum_{f\in F}y_{b^{nij}_{kmf}},\quad n \in N,\quad l^{ij}_{km} \in E
 \end{equation}
-\begin{equation}
-\sum_{l^{ij}_{km}\in E}xp^{nij}_{kmf} = p(n)\quad f \in F,\quad n \in N
-\end{equation}
-\begin{equation}
-\sum_{l^{ij}_{km}\in E}xp^{nij}_{kmf} = b(n)\quad f \in F,\quad n \in N
-\end{equation}
-\begin{eqnarray}%%%%%%%%%%%%%%%%%%%%%%制約条件その8%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\sum_{f \in F}\sum_{(j,m):l^{ij}_{km}\in E}yp^{nij}_{kmf} - \sum_{f \in F}\sum_{(j,m):l^{ji}_{mk}\in E}yp^{nji}_{mkf}= \nonumber \\
+\begin{eqnarray}%式(11)
+\sum_{f \in F}\sum_{(j,m):l^{ij}_{km}\in E}y_{p^{nij}_{kmf}} - \sum_{f \in F}\sum_{(j,m):l^{ji}_{mk}\in E}y_{p^{nji}_{mkf}}= \nonumber \\
 \begin{cases}
-r_n & (v^i_k = s_n)\\
--r_n & (v^i_k =d_n)\\
-0 & (otherwise)
+r_n, & {\rm if}\quad v^i_k = s_n\\
+-r_n, & {\rm if}\quad v^i_k =d_n\\
+0, & {\rm otherwise}
 \end{cases}
-\end{eqnarray}%%%%%%%%%%%%%%%%%%%%%%制約条件その8%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{eqnarray}%%%%%%%%%%%%%%%%%%%%%%制約条件その9%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\sum_{f \in F}\sum_{(j,m):l^{ij}_{km}\in E}yb^{nij}_{kmf} - \sum_{f \in F}\sum_{(j,m):l^{ji}_{mk}\in E}yb^{nji}_{mkf}= \nonumber \\
+\end{eqnarray}
+\begin{eqnarray}%式(12)
+\sum_{f \in F}\sum_{(j,m):l^{ij}_{km}\in E}y_{b^{nij}_{kmf}} - \sum_{f \in F}\sum_{(j,m):l^{ji}_{mk}\in E}y_{b^{nji}_{mkf}}= \nonumber \\
 \begin{cases}
-r_n & (v^i_k = s_n)\\
--r_n & (v^i_k =d_n)\\
-0 & (otherwise)
+r_n, & {\rm if}\quad v^i_k = s_n\\
+-r_n, & {\rm if}\quad v^i_k =d_n\\
+0, &{\rm otherwise}
 \end{cases}
-\end{eqnarray}%%%%%%%%%%%%%%%%%%%%%%制約条件その9%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{equation}
-\sum_{f \in F} \sum_{n \in N}(yp^{nij}_{kmf}+yb^{nij}_{kmf}) \leq |F| \quad  l^{ij}_{km} \in E
+\end{eqnarray}
+\begin{equation}%式(13)
+\sum_{f \in F} \sum_{n \in N}(y_{p^{nij}_{kmf}}+y_{b^{nij}_{kmf}}) \leq |F| \quad  l^{ij}_{km} \in E
 \end{equation}
-\begin{equation}
-\sum_{f \in F}(xp^{nij}_{kmf} + xb^{nij}_{kmf}) \leq 1 \quad n \in N \quad l^{ij}_{km} \in E
-%p^{nij}_{km} + b^{nij}_{km} \leq 1 \quad n \in N \quad l^{ij}_{km} \in E
+\begin{equation}%式(14)
+\sum_{f \in F}(x_{p^{nij}_{kmf}} + x_{b^{nij}_{kmf}}) \leq 1 \quad n \in N \quad l^{ij}_{km} \in E
 \end{equation}
-\begin{equation}
-\sum_{(k,m):l^{ij}_{km} \in E}\sum_{f in F}xp^{nij}_{kmf} = \sum_{(k,m):l^{ij}_{km}\in E}\sum_{f \in F}xb^{nij}_{kmf}\quad n \in N,\quad i \neq j
-%\sum_{(k,m):l^{ij}_{km}\in E}p^{nij}_{km} = \sum_{(k,m):l^{ij}_{km}\in E}b^{nij}_{km},\quad n \in N,i,j \in D, i\neq j
+\begin{equation}%式(15)
+\sum_{(k,m):l^{ij}_{km} \in E}\sum_{f \in F}x_{p^{nij}_{kmf}} = \sum_{(k,m):l^{ij}_{km}\in E}\sum_{f \in F}x_{b^{nij}_{kmf}} \\
+n \in N,\quad i \neq j
 \end{equation}
-\begin{equation}
-\sum_{l^{ij}_{km}\in E}\sum_{f \in F}xp^{nij}_{kmf} \leq \sum_{l^{ij}_{km}\in E}\sum_{f \in F}xb^{nij}_{kmf}\quad n \in N
-%\sum_{l^{ij}_{km}\in E}p^{nij}_{km} \leq \sum_{l^{ij}_{km}\in E}b^{nij}_{km}
+\begin{equation}%式(16)
+\sum_{l^{ij}_{km}\in E}\sum_{f \in F}x_{p^{nij}_{kmf}} \leq \sum_{l^{ij}_{km}\in E}\sum_{f \in F}x_{b^{nij}_{kmf}}\quad n \in N
 \end{equation}
-
-\newpage
-\subsection{各パラメータ・変数・式の説明}
-$N$はリクエスト数の集合、$F$はインデックス数の集合、$E$はリンクの集合を表している。また、$l^{ij}_{km}$はドメイン$i$のノード$k$からドメイン$j$のノード$m$までのリンクを表している。$xp,xb$はプライマリパス、バックアップパスで使用しているインデックスの先頭を表す変数で、$yp,yb$がプライマリパス、バックアップパスで使用しているインデックスその物を表す変数、$p,b$がプライマリパスとバックアップパスのホップ数を表す変数である。(1)が目的関数で、使用インデックス数を最小化するパスを供給する。(2)~(20)が制約条件で(2)~(10)が変数の制約条件、(11)~(20)がフロー制約条件となっている。(2),(3)式は先頭となるインデックスが一つであることを示している。(4)(5)式はインデックスの連続性を示し、(6),(7)式はそのリクエストが使用するインデックスの先頭になり得ない部分にインデックスが割り当てられないことを示す。(8)式はプライマリパスとバックアップパスが同じリンクの同じインデックスを使用しないことを示す。(9),(10)式はそのリクエストのホップ数を示す。(11),(12)式は$xp,xb$と$yp,yb$の間の関係式で、(13)(14)式がインデックスの一貫性を示している。(15),(16)式はノードに対する流入量と流出量の関係式で始点、終点、それ以外の三つで場合分けを行っている。(17)式がリンクで使用しているインデックス数の最大値を示し、(18)式が、リンク重複を制限している。(19)式はSame Domain Sequence Strategyを示す式で、プライマリパス、バックアップパスが同じドメインシーケンスを持つことを示す。(20)式がホップ数の小さい方を優先してプライマリパスに割り当てることを示す。
+%以降、決定変数の取り得る値の範囲　式(17-20)
+\begin{eqnarray}
+x_{p^{nij}_{kmf}} \in \{0,1\},n \in N,l^{ij}_{km}\in E,f \in F\\
+x_{b^{nij}_{kmf}} \in \{0,1\},n \in N,l^{ij}_{km}\in E,f \in F\\
+y_{p^{nij}_{kmf}} \in \{0,1\},n \in N,l^{ij}_{km}\in E,f \in F\\
+y_{b^{nij}_{kmf}} \in \{0,1\},n \in N,l^{ij}_{km}\in E,f \in F
+\end{eqnarray}
+\subsection{式の説明}
+式(2)、式(3)は各要求のプライマリパス、バックアップパスが各リンクの所有するインデックスから先頭を一つだけ選ぶことを示す制約条件である。式(4)、式(5)は各要求のプライマリパス、バックアップパスで使用するインデックスの先頭が決まるとそこから割り当てられるインデックスが決まることを示す制約条件である。式(6)、式(7)は各要求のプライマリパス、バックアップパスで使用するインデックスの先頭の入る余地が存在しない部分を示す制約条件である。式(8)はプライマリパス、バックアップパスで使用しているインデックスに重複が存在しないことを示す制約条件である。式(9)、式(10)は決定変数である使用インデックスの先頭と使用インデックスとの間の関係式を表している。式(11)、式(12)はフロー制約を表し、ノードに流入する要求インデックス量とノードから流出する要求インデックス量の間に差が無いことを示している。式(13)はプライマリパス、バックアップパスで使用しているインデックスの総数の最大値を表す制約条件である。式(14)はプライマリパス、バックアップパスとでリンクの重複を制限する制約条件である。式(15)はプライマリパスとバックアップパスとで通過するドメインの順番が一致することを示す制約条件である。式(16)はプライマリパスとバックアップパスとでホップ数の少ない方をプライマリパスと定める制約条件式である。式(17)-(20)は決定変数であるプライマリパス、バックアップパスのインデックスの先頭及び使用インデックスの要素成分を表している。
 \end{document}
 
