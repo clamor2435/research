@@ -1,4 +1,12 @@
+<<<<<<< HEAD
 This is e-pTeX, Version 3.14159265-p3.7.1-161114-2.6 (utf8.sjis) (TeX Live 2017/W32TeX) (preloaded format=platex 2018.1.16)  2 MAY 2018 13:55
+=======
+<<<<<<< HEAD
+This is e-pTeX, Version 3.14159265-p3.7.1-161114-2.6 (utf8.sjis) (TeX Live 2017/W32TeX) (preloaded format=platex 2018.1.16)  2 MAY 2018 13:22
+=======
+This is e-pTeX, Version 3.14159265-p3.7.1-161114-2.6 (utf8.sjis) (TeX Live 2017/W32TeX) (preloaded format=platex 2018.1.16)  1 MAY 2018 22:30
+>>>>>>> origin/20180501
+>>>>>>> 20180501
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -190,4 +198,8 @@ Here is how much of TeX's memory you used:
  929 hyphenation exceptions out of 8191
  34i,12n,24p,1185b,292s stack positions out of 5000i,500n,10000p,200000b,80000s
 
+<<<<<<< HEAD
+Output written on main_1.dvi (2 pages, 18668 bytes).
+=======
 Output written on main_1.dvi (2 pages, 18736 bytes).
+>>>>>>> origin/20180501
